@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Omer Bojan — Academic Profile</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+      --radius: 10px;
+      --max-w: 760px;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 56px 0 40px;
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+
+    .header-text h1 {
+      font-size: 1.85rem;
+      font-weight: normal;
+      letter-spacing: -0.5px;
+    }
+
+    .header-text .tagline {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .header-text .links {
+      margin-top: 12px;
+      display: flex;
+      gap: 16px;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+    }
+
+    .header-text .links a {
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .header-text .links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── Nav ── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav .container {
+      display: flex;
+      gap: 0;
+    }
+
+    nav a {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding: 14px 18px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── Sections ── */
+    main { padding: 48px 0 80px; }
+
+    section { margin-bottom: 56px; }
+
+    section h2 {
+      font-size: 1.1rem;
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── About ── */
+    .about-text p { margin-bottom: 14px; color: var(--text); }
+
+    /* ── Exercises grid ── */
+    .exercises-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .exercise-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .exercise-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      border-color: #c7d2fe;
+    }
+
+    .exercise-card .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: #eff6ff;
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 10px;
+    }
+
+    .exercise-card h3 {
+      font-size: 0.98rem;
+      font-weight: normal;
+      margin-bottom: 6px;
+    }
+
+    .exercise-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+      line-height: 1.5;
+    }
+
+    .exercise-card .card-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.82rem;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* ── Empty state ── */
+    .empty-state {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.9rem;
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+    }
+
+    .empty-state .icon { font-size: 2rem; margin-bottom: 12px; }
+
+    /* ── Contact ── */
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-list li {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-list .label {
+      width: 80px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 560px) {
+      header .container { flex-direction: column; align-items: flex-start; }
+      .header-text h1 { font-size: 1.5rem; }
+    }
+  </style>
+  <script data-goatcounter="https://omerbojan.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <img class="avatar" src="profile.jpg" alt="Omer Bojan" />
+    <div class="header-text">
+      <h1>Omer Bojan</h1>
+      <p class="tagline">Student · Academic Profile</p>
+      <div class="links">
+        <a href="https://github.com/omerbojan" target="_blank">
+          ⌥ GitHub
+        </a>
+        <a href="mailto:omerbojann@gmail.com">
+          ✉ omerbojann@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <a href="#about" class="active">About</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <div class="about-text">
+        <p>Hi, I'm Omer. I'm a first year PhD at the University of Copenhagen working on stable homotopy theory.</p>
+      </div>
+    </section>
+
+    <!-- Teaching -->
+    <section id="teaching">
+      <h2>Teaching</h2>
+
+      <!--
+        TO ADD AN EXERCISE: Copy one of the .exercise-card blocks below,
+        fill in the tag (e.g. "Python", "Algorithms"), title, description,
+        and update the href to the GitHub link for that exercise.
+      -->
+
+      <div class="exercises-grid">
+
+        <!-- Example card — replace with your real exercises -->
+        <!--
+        <div class="exercise-card">
+          <span class="tag">Python</span>
+          <h3>Exercise 01 — Sorting Algorithms</h3>
+          <p>Implementation of bubble sort, merge sort, and quicksort with time complexity analysis.</p>
+          <a class="card-link" href="https://github.com/omerbojan/your-repo" target="_blank">View on GitHub →</a>
+        </div>
+        -->
+
+        <div class="exercise-card">
+          <span class="tag">Number Theory</span>
+          <h3>Exercises from Chapter 1 of <em>Number Fields</em></h3>
+          <p>Daniel A. Marcus — Gaussian integers, Eisenstein integers, and cyclotomic exercises.</p>
+          <a class="card-link" href="marcus_ch1_exercises.pdf" target="_blank">View PDF →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li>
+          <span class="label">Email</span>
+          <a href="mailto:omerbojann@gmail.com">omerbojann@gmail.com</a>
+        </li>
+        <li>
+          <span class="label">GitHub</span>
+          <a href="https://github.com/omerbojan" target="_blank">github.com/omerbojan</a>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Omer Bojan
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll + active nav highlight
+  const navLinks = document.querySelectorAll('nav a');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
