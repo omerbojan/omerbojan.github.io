@@ -191,6 +191,29 @@
       font-family: 'Arial', sans-serif;
     }
 
+    /* ── Course subsections ── */
+    .course-section { margin-top: 8px; }
+
+    .course-title {
+      font-size: 1rem;
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .subsection { margin-bottom: 28px; }
+
+    .subsection-title {
+      font-size: 0.82rem;
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
     /* ── Empty state ── */
     .empty-state {
       text-align: center;
@@ -289,32 +312,35 @@
     <section id="teaching">
       <h2>Teaching</h2>
 
-      <!--
-        TO ADD AN EXERCISE: Copy one of the .exercise-card blocks below,
-        fill in the tag (e.g. "Python", "Algorithms"), title, description,
-        and update the href to the GitHub link for that exercise.
-      -->
+      <!-- ANT -->
+      <div class="course-section">
+        <h3 class="course-title">Algebraic Number Theory</h3>
 
-      <div class="exercises-grid">
-
-        <!-- Example card — replace with your real exercises -->
-        <!--
-        <div class="exercise-card">
-          <span class="tag">Python</span>
-          <h3>Exercise 01 — Sorting Algorithms</h3>
-          <p>Implementation of bubble sort, merge sort, and quicksort with time complexity analysis.</p>
-          <a class="card-link" href="https://github.com/omerbojan/your-repo" target="_blank">View on GitHub →</a>
-        </div>
-        -->
-
-        <div class="exercise-card">
-          <span class="tag">Number Theory</span>
-          <h3>Exercises from Chapter 1 of <em>Number Fields</em></h3>
-          <p>Daniel A. Marcus — Gaussian integers, Eisenstein integers, and cyclotomic exercises.</p>
-          <a class="card-link" href="marcus_ch1_exercises.pdf" target="_blank">View PDF →</a>
+        <div class="subsection">
+          <h4 class="subsection-title">Exercises</h4>
+          <div class="exercises-grid">
+            <div class="exercise-card">
+              <span class="tag">Number Theory</span>
+              <h3>Exercises from Chapter 1 of <em>Number Fields</em></h3>
+              <p>Daniel A. Marcus — Gaussian integers, Eisenstein integers, and cyclotomic exercises.</p>
+              <a class="card-link" href="ant/marcus_ch1_exercises.pdf" target="_blank">View PDF →</a>
+            </div>
+          </div>
         </div>
 
+        <div class="subsection">
+          <h4 class="subsection-title">Tutorials</h4>
+          <div class="exercises-grid">
+            <div class="exercise-card">
+              <span class="tag">Number Theory</span>
+              <h3>Tutorial 2</h3>
+              <p>Course tutorial notes.</p>
+              <a class="card-link" href="ant/Tu2.pdf" target="_blank">View PDF →</a>
+            </div>
+          </div>
+        </div>
       </div>
+
     </section>
 
     <!-- Contact -->
